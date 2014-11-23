@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Preview</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div id="brand">
+      <img id="logo" src="https://lh4.ggpht.com/NjSeU8ya6h8cNL6JntWZqhlkmAHKcy0vJmxDBqF0x_y4izs6skpxg6a4TRsf3Jza7kk=w300">
+      <h1 id="title">Spotify Preview App</h1>
+    </div>
+    <input type="text" id="input" placeholder="Busca un canción o artista">
+    <div id="resultList"></div>
+  </div>
+  <script id="spotify-template" type="text/x-handlebars-template">
+    <ul>
+      {{#each result}}
+        <div class="track">
+          <img class="avatar" src={{album.images.[0].url}}>
+          
+          <div class="info">
+            <h2 class="name">{{name}}</h2>
+            <h3 class="artist">{{artists.[0].name}}</h3>
+            <audio class="preview" controls>
+              <source src={{preview_url}} type="audio/mpeg">
+            </audio>
+          </div>
+          
+        </div>
+      {{/each}}
+    </ul>
+  </script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
